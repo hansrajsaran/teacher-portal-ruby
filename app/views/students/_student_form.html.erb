@@ -1,0 +1,29 @@
+<div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: @student, url: students_path, method: :post, local: true, id: "student-form") do |f| %>
+          <div class="mb-3">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control", id: "student_name" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :subject_name %>
+            <%= f.text_field :subject_name, class: "form-control", id: "student_subject_name" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :marks %>
+            <%= f.number_field :marks, class: "form-control", id: "student_marks" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= f.submit text, class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

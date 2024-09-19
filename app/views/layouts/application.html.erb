@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TeacherPortal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="centered-wrapper">
+      <nav>
+        <div style="display: flex;">
+          <h3 style="margin: auto;">Tailwebs</h3>
+          <div class="top-right-corner">
+            <% if teacher_signed_in? %>
+              <%= link_to 'Home', root_path %>
+              <%= button_to 'Logout', destroy_teacher_session_path, method: :delete %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+      <% if teacher_signed_in? && flash.any? %>
+        <% flash.each do |key, message| %>
+          <div class="flash flash-<%= key %>" data-controller='flash-message'>
+            <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
